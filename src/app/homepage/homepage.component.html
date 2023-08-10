@@ -1,0 +1,9 @@
+<div class="background">
+  <div class="container">
+    <div class="title">FIND YOUR GAME</div>
+    <div class="subtitle">Podaj swoje zainteresowania aby znaleźć idealną grę dla Ciebie</div>
+    <div class="row" *ngFor="let row of [0, 1]">
+      <input *ngFor="let col of [0, 1, 2, 3]; let index = index" class="input-field" type="text" [(ngModel)]="windows[row * 4 + col]" placeholder="Enter a string" />
+    </div>
+  </div>
+</div>
