@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FindYourGame</title>
+    <style>
+      main {
+        background-image: url("/assets/gimp.jpg");
+        background-repeat: repeat;
+        padding-bottom: 30px;
+        width: 100%;
+      }
+      .front-header {
+        padding-top: 100px;
+        margin-top: auto;
+        color: white;
+        text-align: center;
+        font-size: 60px;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+
+      .second-header {
+        padding-top: 100px;
+        margin-top: auto;
+        color: white;
+        text-align: center;
+        font-size: 30px;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+
+      .polecane-header {
+        padding-top: 100px;
+        margin-top: auto;
+        color: white;
+        text-align: center;
+        font-size: 50px;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+      .games-list {
+        display: flex;
+        flex-direction: column;
+        gap: 20px; /* space between game items */
+      }
+
+      .game-item {
+        padding-left:160px;
+        display: flex;
+        align-items: center; /* vertically center the image and game info */
+        gap: 20px; /* space between image and game info */
+      }
+
+      .game-info {
+        display: flex;
+        flex-direction: column;
+        gap: 10px; /* space between title and description */
+      }
+      .game-title {
+        font-weight: bold;
+        font-size: 36px;
+        color: white;
+      }
+
+      .game-description {
+        font-size: 20px;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="front-header">Witaj na FindYourGame!</div>
+      <div class="polecane-header">Wybrana przez Ciebie gra to:</div>
+      <app-carousel [slides]="carouselSlides"></app-carousel>
+    </main>
+  </body>
+</html>

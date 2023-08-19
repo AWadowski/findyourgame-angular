@@ -1,13 +1,15 @@
 body, html {
   margin: 0;
   padding: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
 }
 
 .background {
   background-image: url('/assets/gimp.jpg');
-  min-height: 100%;
+  background-size: cover;
+  background-repeat: auto;
+  min-height: 85%;
   width: 100%;
   display: flex;
   align-items: center;
@@ -27,7 +29,7 @@ body, html {
   font-weight: bold; /* Makes the text bold */
   color: black; /* Color of the text */
   text-align: center; /* Centers the text within the container */
-  margin-bottom: 20px; /* Space between the title and the input fields */
+  margin-bottom: 5px; /* Space between the title and the input fields */
   font: sans-serif;
 }
 
@@ -35,10 +37,11 @@ body, html {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 5px;
   margin-top: 5px;
-  padding: 20px;
+  padding: 5px;
   width: 80%; /* Adjust as needed */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .row {
@@ -53,4 +56,35 @@ body, html {
 .input-field {
   width: 20%; /* Adjust as needed */
   margin-right: 1%; /* Add some space between columns */
+}
+
+.image-gallery {
+  display: flex; /* Arranges the child elements (image-item) in a row */
+  justify-content: space-around; /* Evenly distributes the space around the items */
+  flex-wrap: wrap; /* Allows the items to wrap to the next line if the screen is too small */
+  padding: 20px; /* Adds some space around the gallery */
+}
+
+.image-item {
+  text-align: center;
+  flex: 1 0 auto;
+  margin: 10px;
+  overflow:visible; /* Hides any part of the image that might exceed the container's bounds */
+  width: 400px; /* Set fixed width */
+  height: 500px; /* Set fixed height */
+}
+
+.image-item img {
+  width: 100%; /* Takes full width of the container */
+  height: 100%; /* Takes full height of the container */
+  object-fit: cover; /* Covers the entire container while maintaining aspect ratio */
+  display: block; /* Removes any space at the bottom of inline-block elements like images */
+  margin: auto; /* Centers the image horizontally if it's smaller than the container */
+}
+.image-item span {
+  display: block; /* Makes the text a block-level element so it appears on a new line */
+  font-size: 50px; /* Adjust font size as needed */
+  text-align: center; /* Centers the text */
+  margin-top: 5px; /* Adds some space between the text and the image */
+  color: rgb(6, 6, 6); /* Sets the text color */
 }

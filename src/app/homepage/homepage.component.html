@@ -1,9 +1,224 @@
-<div class="background">
-  <div class="container">
-    <div class="title">FIND YOUR GAME</div>
-    <div class="subtitle">Podaj swoje zainteresowania aby znaleźć idealną grę dla Ciebie</div>
-    <div class="row" *ngFor="let row of [0, 1]">
-      <input *ngFor="let col of [0, 1, 2, 3]; let index = index" class="input-field" type="text" [(ngModel)]="windows[row * 4 + col]" placeholder="Enter a string" />
-    </div>
-  </div>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FindYourGame</title>
+    <style>
+      main {
+        background-image: url("/assets/gimp.jpg");
+        background-size: cover;
+        padding-bottom: 30px;
+      }
+      .row {
+        display: flex;
+        justify-content: space-between;
+      }
+      .column {
+        margin-left: auto;
+        width: 23%;
+        padding: 1%;
+      }
+      .button-container {
+        color: white;
+        text-shadow: 2px;
+        text-align: center;
+        margin-top: 20px;
+      }
+      .front-header {
+        padding-top: 100px;
+        margin-top: auto;
+        color: white;
+        text-align: center;
+        font-size: 60px;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+
+      .second-header {
+        padding-top: 100px;
+        margin-top: auto;
+        color: white;
+        text-align: center;
+        font-size: 30px;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+
+      .polecane-header {
+        padding-top: 100px;
+        margin-top: auto;
+        color: white;
+        text-align: center;
+        font-size: 50px;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+      label {
+        margin-left: auto;
+        color: white;
+        font-size: 20px;
+        font-weight: bold;
+      }
+      input {
+        width: 80%;
+        height: 40px;
+        border-radius: 5px;
+        border: 1px solid black;
+        padding: 5px;
+      }
+      .btn {
+        background-color: #ffffff;
+        color: #000000; 
+        border: none;
+      }
+
+      .image-container {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 30px;
+        margin-bottom: 50px;
+        margin-left: 300px;
+        margin-right: 300px;
+      }
+
+      .image-wrapper {
+        width: 30%; 
+        text-align: center;
+        padding-left: auto;
+        padding-right: auto;
+      }
+
+      img {
+        height: 400px;
+        width: 300px;
+        display: block;
+        margin: 0 auto; 
+      }
+
+      .image-title {
+        color: white;
+        margin-top: 10px;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <header></header>
+    <main>
+      <section class="form-game">
+        <form [formGroup]="gameForm" (ngSubmit)="submitGameForm()">
+          <div class="front-header">Witaj na FindYourGame!</div>
+          <div class="second-header">
+            Znajdź grę według swoich preferencji, podaj odpowiednie parametry
+            wyszukiwania
+          </div>
+          <div class="row">
+            <div class="column p-2">
+              <label for="input-type1">Typ gry</label>
+              <input
+                class="form-control form-control-md"
+                type="text"
+                placeholder="Typ gry"
+                name="input-type1"
+                formControlName="gameType"
+              />
+            </div>
+            <div class="column p-2">
+              <label for="input-type2">Czy multiplayer</label>
+              <input
+                class="form-control form-control-md"
+                type="text"
+                placeholder="Tak/Nie"
+                name="input-type2"
+                formControlName="multiplayer"
+              />
+            </div>
+            <div class="column p-2">
+              <label for="input-type3">Jaka platforma?</label>
+              <input
+                class="form-control form-control-md"
+                type="text"
+                placeholder="STEAM,EPIC GAMES, RIOT, itp."
+                name="input-type3"
+                formControlName="platform"
+              />
+            </div>
+            <div class="column p-2">
+              <label for="input-type4">Minimum wiekowe</label>
+              <input
+                class="form-control form-control-md"
+                type="text"
+                placeholder="13"
+                name="input-type4"
+                formControlName="age"
+              />
+            </div>
+          </div>
+          <div class="row">
+            <div class="column p-2">
+              <label for="input-type5">Nazwa wydawcy</label>
+              <input
+                class="form-control form-control-md"
+                type="text"
+                placeholder="Valve"
+                name="input-type5"
+                formControlName="wydawca"
+              />
+            </div>
+            <div class="column p-2">
+              <label for="input-type6">Minimalna data produkcji</label>
+              <input
+                class="form-control form-control-md"
+                type="text"
+                placeholder="2022"
+                name="input-type6"
+                formControlName="dateOfOut"
+              />
+            </div>
+            <div class="column p-2">
+              <label for="input-type7">Czy występują Mikropłatności</label>
+              <input
+                class="form-control form-control-md"
+                type="text"
+                placeholder="Tak/Nie"
+                name="input-type7"
+                fromControlName="transactions"
+              />
+            </div>
+            <div class="column p-2">
+              <label for="input-type8">Motyw gry</label>
+              <input
+                class="form-control form-control-md"
+                type="text"
+                placeholder="przygodowe, RPG itp."
+                name="input-type8"
+                formControlName="motyw"
+              />
+            </div>
+          </div>
+          <div class="button-container">
+            <button class="btn btn-lg">Znajdź gry!</button>
+          </div>
+        </form>
+      </section>
+      <div class="polecane-header">Polecane gry:</div>
+      <section class="image-container">
+        <div class="image-wrapper">
+          <img src="/assets/gta.png" alt="Grand Theft Auto V" />
+          <div class="image-title">Grand Theft Auto V</div>
+        </div>              
+        <div class="image-wrapper">
+          <img src="/assets/minecraft.jpg" alt="Minecraft" />
+          <div class="image-title">Minecraft</div>
+        </div>
+        <div class="image-wrapper">
+          <img src="/assets/leagueoflegends.jpg" alt="League of legends" />
+          <div class="image-title">League of legends</div>
+        </div>  
+      </section>
+    </main>
+    <footer></footer>
+  </body>
+</html>
