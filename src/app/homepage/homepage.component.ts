@@ -17,6 +17,7 @@ export interface Game {
   motyw: string;
   transactions: string;
   description: string;
+  ranking: number;
 }
 
 @Component({

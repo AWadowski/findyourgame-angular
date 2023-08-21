@@ -1,5 +1,5 @@
 <ngb-carousel [pauseOnFocus]="false">
-  <ng-template ngbSlide *ngFor="let slide of slides">
+  <ng-template ngbSlide *ngFor="let slide of slides; let i = index">
     <div class="carousel-content">
       <div class="wrapper">
         <img [src]="slide.imageUrl" [alt]="slide.altText" />
@@ -7,6 +7,10 @@
       <div class="carousel-caption">
         <h3>{{ slide.title }}</h3>
         <p class="carousel-description">{{ slide.description }}</p>
+        <div class="buttons">
+          <button (click)="likeSlide(i)" class="btn btn-success" [hidden]="slide.clicked">Like</button>
+          <button (click)="dislikeSlide(i)" class="btn btn-danger" [hidden]="slide.clicked">Dislike</button>
+        </div>
       </div>
     </div>
   </ng-template>

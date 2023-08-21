@@ -2,6 +2,7 @@ import {Component, Input} from '@angular/core';
 import { ISlide } from 'src/app/carousel/carousel.component';
 import {Game} from "../homepage.component";
 import {GamesService} from "../gamesservice";
+import { resetFakeAsyncZone } from '@angular/core/testing';
 
 @Component({
   selector: 'app-secondpage',
@@ -25,7 +26,9 @@ export class SecondpageComponent {
       altText: `Carousel slide for ${game.gameName}`,
       logoUrl: '',
       title: game.gameName || 'Default Title',
-      description: game.description || 'Default Description'
+      description: game.description || 'Default Description',
+      ranking: game.ranking || 0,
+      id: game.id || 0,
     }));
   }
 
