@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import { ISlide } from 'src/app/carousel/carousel.component';
+import {Game} from "../homepage.component";
+import {GamesService} from "../gamesservice";
 
 @Component({
   selector: 'app-secondpage',
@@ -8,30 +10,23 @@ import { ISlide } from 'src/app/carousel/carousel.component';
 })
 export class SecondpageComponent {
   carouselSlides!: ISlide[];
+  @Input() games!: Game[];
 
+  constructor(private gamesService: GamesService) {
+  }
   ngOnInit(): void {
-    this.setupCarouselSlides();
+    this.games=this.gamesService.getGames();
+    this.setupCarouselSlides(this.games);
   }
 
-  setupCarouselSlides() {
-    this.carouselSlides = [
-      {
-        imageUrl: '../../../assets/minecraft.jpg',
-        altText: 'Carousel slide 1',
-        logoUrl: '',
-        title: 'Quality Medicines for Your Health',
-        description:
-          'Discover our wide range of high-quality medicines and supplements that will help you take care of your health.',
-      },
-      {
-        imageUrl: '../../../assets/gta.png',
-        altText: 'Random second slide',
-        logoUrl: '',
-        title: 'Relief and Wellness Solutions',
-        description:
-          'With our extensive selection of medications, you can alleviate pain, improve your well-being, and restore your health.',
-      },
-    ];
+  setupCarouselSlides(games: Game[]) {
+    this.carouselSlides = games.map(game => ({
+      imageUrl: `../../../assets/img/${game.id}.jpg`,
+      altText: `Carousel slide for ${game.gameName}`,
+      logoUrl: '',
+      title: game.gameName || 'Default Title',
+      description: game.description || 'Default Description'
+    }));
   }
 
 }

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import {GamesService} from "./gamesservice";
 
 
 export interface Game {
@@ -15,6 +16,7 @@ export interface Game {
   dateOfOut: Date;
   motyw: string;
   transactions: string;
+  description: string;
 }
 
 @Component({
@@ -28,7 +30,7 @@ export class HomepageComponent {
   games: Game[] = [];
   gameForm: any;
 
-  constructor(private readonly fb: FormBuilder, private http: HttpClient, private router: Router) {
+  constructor(private readonly fb: FormBuilder, private http: HttpClient, private router: Router, private gameService: GamesService) {
   }
 
   ngOnInit(): void {
@@ -51,6 +53,7 @@ export class HomepageComponent {
     this.http.post<Game[]>('http://localhost:8080/api/games/findByCriteria', formData).subscribe(
       (response) => {
         this.games = response;
+        this.gameService.setGames(this.games);
         console.log(this.games);
         this.router.navigate(['/secondpage']);
       },
@@ -60,6 +63,6 @@ export class HomepageComponent {
     );
   }
 }
-  
+
 
 

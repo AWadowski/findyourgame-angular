@@ -28,7 +28,7 @@ import { NgbCarouselModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NgbModule,
     NgbCarouselModule,
   ],
-  
+
   providers: [],
   bootstrap: [AppComponent]
 })
