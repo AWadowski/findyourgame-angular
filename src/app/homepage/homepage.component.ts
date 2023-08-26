@@ -36,14 +36,14 @@ export class HomepageComponent {
 
   ngOnInit(): void {
     this.gameForm = this.fb.group({
-      transactions: [""],
-      gameType: [""],
-      multiplayer: [""],
-      platform: [""],
-      age: [""],
-      wydawca: [""],
-      dateOfOut: [""],
-      motyw: [""],
+      transactions: null,
+      gameType: null,
+      multiplayer: null,
+      platform: null,
+      age: null,
+      wydawca: null,
+      dateOfOut: null,
+      motyw: null,
     })
   }
 
